@@ -25,6 +25,8 @@ Cada estado é representado por uma tupla de 10 tuplas, onde cada tupla correspo
 As ações consistem em mover a caixa do topo de uma pilha para o topo de outra, obedecendo às seguintes restrições:
 - A pilha destino deve ter menos de 3 caixas.
 - Se a pilha destino não estiver vazia, o peso da caixa no topo deve ser maior ou igual ao da caixa a ser movida.
+- Ao mover uma casa, há o custo de 1 de energia. Porém, mover mais de 2 casas, custa 75% do movimento. Por exemplo: 4 casas, custa 3 de energia. A cada 10kg, o custo aumenta em 1 energia, assim uma caixa de 20 kg, custa 2.
+Exemplo: Mover 2 casas uma caixa de 40kg: 2*0,75 + 40/10 = 5,5 de energia
 
 ## Funcionalidades
 
