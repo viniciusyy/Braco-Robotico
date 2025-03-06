@@ -5,18 +5,18 @@ Este repositório contém a implementação do problema dos boxes utilizando alg
 ## Descrição do Problema
 
 
-                             | ------
-                             |      |
-                             | 
-_10_  _30_  ____  _10_  ____ | _40_  ____  _20_  ____  _30_ 
+                               | ------
+                               |      |
+                               | 
+_10_  _30_  ____  _10_  ____ __|__ _40_  ____  _20_  ____  _30_ 
 
 
 Assim, uma possível configuração final seria:
 
-                             | ------
- 10    10                    |      |
- 30    20                    | 
-_40_  _30_  ____  ____  ____ | ____  ____  ____  ____  ____ 
+                               | ------
+ 10    10                      |      |
+ 30    20                      | 
+_40_  _30_  ____  ____  ____ __|__ ____  ____  ____  ____  ____ 
 
 Cada estado é representado por uma tupla de 10 tuplas, onde cada tupla corresponde a uma pilha de caixas.  
 - **Estado Inicial:**  
