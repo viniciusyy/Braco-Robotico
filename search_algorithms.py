@@ -1,8 +1,5 @@
 import heapq
 from problem import heuristic, get_successors, goal_state
-from node import No
-from visited import Visitados
-from fila_prioridade import FilaPrioridade
 
 # ----------------------------------------------------------------
 # Implementações usando a representação de estados (tuplas)
@@ -72,62 +69,3 @@ def astar_search(initial):
             heapq.heappush(frontier, (new_cost + heuristic(succ), new_cost, succ, new_path))
     return None, float('inf')
 
-# ----------------------------------------------------------------
-# Implementações usando a classe No (para problemas encapsulados)
-# ----------------------------------------------------------------
-
-def dijkstra(problema):
-    """
-    Implementação de Dijkstra utilizando a classe No e um objeto 'problema'
-    que deve implementar os métodos:
-      - iniciar()
-      - testar_objetivo(no)
-      - gerar_sucessores(no)
-      - custo(no, no_sucessor)
-    """
-    no = problema.iniciar()
-    fila = FilaPrioridade()
-    fila.push(0, no)
-    visitados = Visitados()
-    visitados.adicionar(no)
-
-    while not fila.esta_vazio():
-        no = fila.pop()
-        visitados.adicionar(no)
-        if problema.testar_objetivo(no):
-            return (visitados.tamanho(), no)
-        nos_sucessores = problema.gerar_sucessores(no)
-        for no_sucessor in nos_sucessores:
-            if not visitados.foi_visitado(no_sucessor):
-                no_sucessor.custo = no.custo + problema.custo(no, no_sucessor)
-                fila.push(no_sucessor.custo, no_sucessor)
-    return (visitados.tamanho(), None)
-
-def a_estrela(problema):
-    """
-    Implementação de A* utilizando a classe No e um objeto 'problema'
-    que deve implementar os métodos:
-      - iniciar()
-      - testar_objetivo(no)
-      - gerar_sucessores(no)
-      - custo(no, no_sucessor)
-      - heuristica(no) ou heuristica(no_sucessor)
-    """
-    no = problema.iniciar()
-    fila = FilaPrioridade()
-    fila.push(0, no)
-    visitados = Visitados()
-    visitados.adicionar(no)
-
-    while not fila.esta_vazio():
-        no = fila.pop()
-        visitados.adicionar(no)
-        if problema.testar_objetivo(no):
-            return (visitados.tamanho(), no)
-        nos_sucessores = problema.gerar_sucessores(no)
-        for no_sucessor in nos_sucessores:
-            if not visitados.foi_visitado(no_sucessor):
-                no_sucessor.custo = no.custo + problema.custo(no, no_sucessor)
-                no_sucessor.heuristica = problema.heuristica(no_sucessor)
-                fila.push(no_sucessor.custo + no_sucessor.heuristica, no_sucessor)
-    return (visitados.tamanho(), None)

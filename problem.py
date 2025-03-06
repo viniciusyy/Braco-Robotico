@@ -1,13 +1,5 @@
 import heapq
 
-# =============================================================================
-# DEFINIÇÃO DO PROBLEMA
-# =============================================================================
-
-# Cada estado é uma tupla (imutável) de 10 tuplas, cada uma representando uma pilha.
-# Cada pilha é uma tupla dos pesos (inteiros) das caixas, com o primeiro elemento
-# sendo o fundo e o último o topo.
-
 # Configuração inicial (conforme o desenho sugerido):
 #  - posição 0: pilha com caixa 10
 #  - posição 1: pilha com caixa 30
@@ -102,7 +94,6 @@ def heuristic(state):
     
     (Para as caixas que já estão em 0 ou 1, a heurística é zero.)
     
-    Esta heurística é simples e pode ser bastante "conservadora".
     """
     h = 0
     for i, pile in enumerate(state):
